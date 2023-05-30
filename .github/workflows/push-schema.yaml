@@ -1,0 +1,50 @@
+name: push_schema
+on:
+  push:
+    tags: [ "*" ]
+
+jobs:
+  push_schema:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: clone django_openapi
+        uses: actions/checkout@v3
+        with:
+          path: django_openapi
+
+      - name: clone flutter_djangoflow
+        uses: actions/checkout@v3
+        with:
+          path: flutter_djangoflow
+          token: ${{ secrets.FLUTTER_GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Generate swagger.json
+        working-directory: django_openapi
+        run: |
+          python -m venv venv
+          . venv/bin/activate
+          pip install -r requirements.txt
+          ./manage.py spectacular --format openapi-json > ../flutter_djangoflow/packages/djangoflow_openapi/swagger.json
+
+      - name: Generate OpenAPI Client
+        uses: openapi-generators/openapitools-generator-action@v1.3.0
+        with:
+          generator: dart-dio
+          openapi-file: flutter_djangoflow/packages/djangoflow_openapi/swagger.json
+          config-file: django_openapi/dart-dio-generator-config.yaml
+          command-args: -p pubVersion=${{ github.ref_name }} -o flutter_djangoflow/packages/djangoflow_openapi/
+
+      - name: Commit and push changes
+        working-directory: flutter_djangoflow
+        run: |
+          git config --global user.email "openapi-bot@djangoflow.com"
+          git config --global user.name "OpenAPI Bot"
+          git add .
+          git commit -m "Update OpenAPI Client for ${{ github.ref_name }}"
+          git push origin main
+

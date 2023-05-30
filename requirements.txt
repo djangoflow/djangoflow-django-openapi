@@ -1,0 +1,3 @@
+django-df-auth==0.27
+django-df-notifications==1.1.13
+git+https://github.com/djangoflow/django-df-chat@4fc908e

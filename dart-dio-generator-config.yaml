@@ -1,0 +1,8 @@
+additionalProperties:
+  browserClient: false
+  nullableFields: true
+  serializationLibrary: json_serializable
+  pubName: djangoflow_openapi
+  pubLibrary: djangoflow_openapi
+  pubHomepage: https://github.com/djangoflow/flutter-djangoflow/
+  pubDescription: "DjangoFlow OpenAPI API Client"
