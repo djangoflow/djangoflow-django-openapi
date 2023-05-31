@@ -38,6 +38,7 @@ jobs:
           generator: dart-dio
           openapi-file: flutter_djangoflow/packages/djangoflow_openapi/swagger.json
           config-file: django_openapi/dart-dio-generator-config.yaml
+          generator-tag: v6.6.0
           command-args: -p pubVersion=${{ github.ref_name }} -o flutter_djangoflow/packages/djangoflow_openapi/
 
       - name: Commit and push changes
