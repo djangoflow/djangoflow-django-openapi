@@ -20,6 +20,10 @@ jobs:
           repository: djangoflow/flutter-djangoflow
           token: ${{ secrets.FLUTTER_GITHUB_TOKEN }}
 
+      - name: Clean client folder
+        working-directory: flutter_djangoflow/packages/djangoflow_openapi
+        run: rm -rf .* * || true
+
       - uses: actions/setup-python@v4
         with:
           python-version: "3.9"
