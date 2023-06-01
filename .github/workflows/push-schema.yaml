@@ -22,7 +22,7 @@ jobs:
 
       - name: Clean client folder
         working-directory: flutter_djangoflow/packages/djangoflow_openapi
-        run: rm -rf .* * || true
+        run: rm -rf .openapi-generator doc lib test
 
       - uses: actions/setup-python@v4
         with:
