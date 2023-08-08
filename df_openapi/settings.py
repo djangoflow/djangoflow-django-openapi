@@ -63,6 +63,13 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "social_core.backends.google.GoogleOAuth2",
+    "social_core.backends.facebook.FacebookOAuth2",
+    "social_core.backends.apple.AppleIdAuth",
+    "social_core.backends.discord.DiscordOAuth2",
+]
+
 SITE_ID = 1
 
 DATABASES = {
@@ -109,7 +116,7 @@ DF_NOTIFICATIONS = {
 
 
 DF_AUTH = {
-    "USER_IDENTITY_FIELDS": ("username",),
+    "USER_IDENTITY_FIELDS": ("email",),
 }
 
 REST_FRAMEWORK = {
