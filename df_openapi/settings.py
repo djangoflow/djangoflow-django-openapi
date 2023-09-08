@@ -1,4 +1,12 @@
 from pathlib import Path
+from df_api_drf.defaults import (
+    DF_API_DRF_INSTALLED_APPS,
+    REST_FRAMEWORK,
+    SPECTACULAR_SETTINGS,
+)
+
+from df_auth.defaults import DF_AUTH_INSTALLED_APPS
+
 
 
 DEBUG = True
@@ -20,18 +28,15 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
     "fcm_django",
     "django_slack",
     "import_export",
     "django_celery_beat",
-    "otp_twilio",
-    "drf_spectacular",
-    "drf_spectacular_sidecar",
-
-    "df_auth",
     "df_notifications",
     "df_chat",
+
+    *DF_API_DRF_INSTALLED_APPS,
+    *DF_AUTH_INSTALLED_APPS,
 ]
 
 MIDDLEWARE = [
@@ -113,7 +118,22 @@ DF_NOTIFICATIONS = {
 
 
 DF_AUTH = {
-    "USER_IDENTITY_FIELDS": ("email",),
+    "USER_SIGNUP_REQUIRED_FIELDS": {},
+    "USER_SIGNUP_OPTIONAL_FIELDS": {},
+    "USER_SOCIAL_AUTH_FIELDS": {},
+    "USER_IDENTITY_FIELDS": {},
+    "REQUIRED_AUTH_FIELDS": {},
+    "OPTIONAL_AUTH_FIELDS": {},
+    "TEST_USER_EMAIL": None,
+    "OTP_IDENTITY_UPDATE_FIELD": True,
+    "OTP_DEVICE_MODELS": {
+        "email": "django_otp.plugins.otp_email.models.EmailDevice",
+        "totp": "django_otp.plugins.otp_totp.models.TOTPDevice",
+        "sms": "otp_twilio.models.TwilioSMSDevice",
+    },
+    "OTP_AUTO_CREATE_ACCOUNT": True,
+    "SEND_OTP_UNAUTHORIZED_USER": True,
+    "SIGNUP_ALLOWED": True,
 }
 
 REST_FRAMEWORK = {
