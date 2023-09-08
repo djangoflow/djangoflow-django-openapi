@@ -118,12 +118,18 @@ DF_NOTIFICATIONS = {
 
 
 DF_AUTH = {
-    "USER_SIGNUP_REQUIRED_FIELDS": {},
+    "USER_SIGNUP_REQUIRED_FIELDS": {
+        "email": "rest_framework.serializers.EmailField",
+    },
     "USER_SIGNUP_OPTIONAL_FIELDS": {},
     "USER_SOCIAL_AUTH_FIELDS": {},
-    "USER_IDENTITY_FIELDS": {},
+    "USER_IDENTITY_FIELDS": {
+        "email": "rest_framework.serializers.EmailField",
+    },
     "REQUIRED_AUTH_FIELDS": {},
-    "OPTIONAL_AUTH_FIELDS": {},
+    "OPTIONAL_AUTH_FIELDS": {
+        "otp": "rest_framework.serializers.CharField",
+    },
     "TEST_USER_EMAIL": None,
     "OTP_IDENTITY_UPDATE_FIELD": True,
     "OTP_DEVICE_MODELS": {
