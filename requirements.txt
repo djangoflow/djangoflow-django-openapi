@@ -1,4 +1,4 @@
-django-df-auth==1.0.0-alpha.8
+django-df-auth==1.0.0-alpha.9
 django-df-api-drf==0.0.9
 django-df-notifications==1.1.13
 git+https://github.com/djangoflow/django-df-chat@cf5bb34
