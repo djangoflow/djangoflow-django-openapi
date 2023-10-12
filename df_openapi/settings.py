@@ -1,13 +1,12 @@
 from pathlib import Path
+
 from df_api_drf.defaults import (
     DF_API_DRF_INSTALLED_APPS,
     REST_FRAMEWORK,
     SPECTACULAR_SETTINGS,
 )
-
 from df_auth.defaults import DF_AUTH_INSTALLED_APPS
-
-
+from df_remote_config.defaults import DF_REMOTE_CONFIG_INSTALLED_APPS
 
 DEBUG = True
 
@@ -34,9 +33,9 @@ INSTALLED_APPS = [
     "django_celery_beat",
     "df_notifications",
     "df_chat",
-
     *DF_API_DRF_INSTALLED_APPS,
     *DF_AUTH_INSTALLED_APPS,
+    *DF_REMOTE_CONFIG_INSTALLED_APPS,
 ]
 
 MIDDLEWARE = [
@@ -152,16 +151,5 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "DF Chat API",
-    "DESCRIPTION": "DF Chat API (Django)",
-    "VERSION": "0.0.1",
-    "SERVE_INCLUDE_SCHEMA": False,
-    "SWAGGER_UI_DIST": "SIDECAR",  # shorthand to use the sidecar instead
-    "SWAGGER_UI_FAVICON_HREF": "SIDECAR",
-    "REDOC_DIST": "SIDECAR",
-    "SCHEMA_PATH_PREFIX": "/api/v1",
-    "COMPONENT_SPLIT_REQUEST": True,
-    "COMPONENT_NO_READ_ONLY_REQUIRED": True,
-    # "ENUM_NAME_OVERRIDES": {"GenderEnum": "accounts.models.Gender"},
-    "ENUM_ADD_EXPLICIT_BLANK_NULL_CHOICE": False,
+    **SPECTACULAR_SETTINGS,
 }
