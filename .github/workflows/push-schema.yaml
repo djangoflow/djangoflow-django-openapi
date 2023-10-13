@@ -34,7 +34,7 @@ jobs:
           python -m venv venv
           . venv/bin/activate
           pip install -r requirements.txt
-          ./manage.py spectacular --format openapi-json > ../flutter_djangoflow/packages/djangoflow_openapi/swagger.json
+          ./manage.py generate_schema > ../flutter_djangoflow/packages/djangoflow_openapi/swagger.json
 
       - name: Generate OpenAPI Client
         uses: openapi-generators/openapitools-generator-action@v1.3.0

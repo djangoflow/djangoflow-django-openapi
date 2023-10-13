@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "import_export",
     "django_celery_beat",
     "df_notifications",
+    "df_openapi",
     *DF_API_DRF_INSTALLED_APPS,
     *DF_AUTH_INSTALLED_APPS,
     *DF_REMOTE_CONFIG_INSTALLED_APPS,
