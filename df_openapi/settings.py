@@ -7,6 +7,7 @@ from df_api_drf.defaults import (
 )
 from df_auth.defaults import DF_AUTH_INSTALLED_APPS
 from df_remote_config.defaults import DF_REMOTE_CONFIG_INSTALLED_APPS
+from df_chat.defaults import DF_CHAT_INSTALLED_APPS
 
 DEBUG = True
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     *DF_API_DRF_INSTALLED_APPS,
     *DF_AUTH_INSTALLED_APPS,
     *DF_REMOTE_CONFIG_INSTALLED_APPS,
+    *DF_CHAT_INSTALLED_APPS,
 ]
 
 MIDDLEWARE = [
