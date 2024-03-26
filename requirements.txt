@@ -2,4 +2,4 @@ django-df-auth==1.0.10
 django-df-api-drf==1.0.4
 django-df-notifications==1.2.12
 django-df-remote-config==0.0.7
-django-df-chat==0.1.6
+django-df-chat==0.1.7
